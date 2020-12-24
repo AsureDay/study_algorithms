@@ -127,7 +127,6 @@ bool MyGraph::haveCicles()
 	int i = 0;
 	while (1)
 	{
-		cout << "a\t";
 		this->color('w');
 		res = res || haveCicle(item);
 		if (res) {
