@@ -100,13 +100,13 @@ bool MyGraph::haveCicles_dontSeeThat(Vert* v)
 }
 int MyGraph::withoutThisUncicled_slow()
 {
-	if (!haveCicles()) return -1;
+	if (!haveCicles()) return INT32_MIN+1;
 
 	for (auto i = vert_list.begin(); i != vert_list.end(); ++i)
 	{
 		if (!haveCicles_dontSeeThat(*i)) return (*i)->index;
 	}
-	return -2;
+	return INT32_MIN;
 }
 
 void MyGraph::color(char c)
