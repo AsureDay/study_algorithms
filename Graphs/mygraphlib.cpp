@@ -65,13 +65,14 @@ bool MyGraph::haveCicle_dontSeeThat(Vert* v, Vert* that)
 	for (auto item = ways_from[v].begin(); item != ways_from[v].end(); ++item)
 	{
 		Vert* u = *item;
-		if (u == that) continue;
+		if (u == that) 
+			continue;
 		if (u->color == 'g')
-			return true;
+			continue;
 		if (u->color == 'b')
 			return false;
-		if (u->color == 'w')
-			if(haveCicle_dontSeeThat(*item, that)) return true;
+		if (u->color == 'w' && haveCicle_dontSeeThat(*item, that))
+			 return true;
 	}
 	v->color = 'b';
 	return false;
@@ -153,8 +154,8 @@ bool MyGraph::haveCicle(Vert* v)
 			return true;
 		if (u->color == 'b')
 			return false;
-		if (u->color == 'w')
-			if(haveCicle(*item)) return 1;
+		if (u->color == 'w' && haveCicle(*item))
+			return true;
 	}
 	v->color = 'b';
 	return false;
