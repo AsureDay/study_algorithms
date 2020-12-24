@@ -1,10 +1,9 @@
 #include "mygraphlib.h"
 #include "iostream"
 
-
 MyGraph::~MyGraph()
 {
-	this->ways_to.clear();
+	this->ways_from.clear();
 	this->vert_list.clear();
 }
 
@@ -25,17 +24,17 @@ void MyGraph::removeVert(Vert* v)
 {
 	for (vector<Vert*>::iterator i = vert_list.begin(); i != vert_list.end(); ++i)
 	{
-		for (list<Vert*>::iterator j = ways_to[*i].begin(); j != ways_to[*i].end(); ++j)
+		for (list<Vert*>::iterator j = ways_from[*i].begin(); j != ways_from[*i].end(); ++j)
 		{
 			if (*j == v)
 			{
-				ways_to[*i].erase(j);
-				//ways_to[*i].remove(*j);
+				ways_from[*i].erase(j);
+				//ways_from[*i].remove(*j);
 				break;
 			}
 		}
 	}
-	ways_to[v].clear();
+	ways_from[v].clear();
 }
 
 void MyGraph::removeVert(int index)
@@ -50,7 +49,7 @@ void MyGraph::removeEdge(int indexFrom, int indexTo)
 
 void MyGraph::showWaysFrom(int index)
 {
-	for (list<Vert*>::iterator i = ways_to[getVert(index)].begin(); i != ways_to[getVert(index)].end(); ++i)
+	for (list<Vert*>::iterator i = ways_from[getVert(index)].begin(); i != ways_from[getVert(index)].end(); ++i)
 	{
 		cout << getIndex(*i) << "\t";
 	}
@@ -63,7 +62,7 @@ bool MyGraph::haveCicle_dontSeeThat(Vert* v, Vert* that)
 {
 	v->color = 'g';
 	notViseted.remove(v);
-	for (auto item = ways_to[v].begin(); item != ways_to[v].end(); ++item)
+	for (auto item = ways_from[v].begin(); item != ways_from[v].end(); ++item)
 	{
 		Vert* u = *item;
 		if (u == that) continue;
@@ -148,7 +147,7 @@ bool MyGraph::haveCicle(Vert* v)
 {
 	v->color = 'g';
 	notViseted.remove(v);
-	for (auto item = ways_to[v].begin(); item != ways_to[v].end(); ++item)
+	for (auto item = ways_from[v].begin(); item != ways_from[v].end(); ++item)
 	{
 		Vert* u = *item;
 		if (u->color == 'g')
@@ -179,11 +178,11 @@ Vert* MyGraph::getVert(int index)
 void MyGraph::addEdge(Vert* vertFrom, Vert* vertTo)
 {
 	num_edges++;
-	ways_to[vertFrom].push_back(vertTo);
+	ways_from[vertFrom].push_back(vertTo);
 }
 
 void MyGraph::removeEdge(Vert* vertFrom, Vert* vertTo)
 {
 	num_edges--;
-	ways_to[vertFrom].remove(vertTo);
+	ways_from[vertFrom].remove(vertTo);
 }

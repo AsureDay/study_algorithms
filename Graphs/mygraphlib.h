@@ -20,7 +20,7 @@ struct MyGraph
 	int num_vertexes;
 	int num_edges;
 	vector<Vert*> vert_list;
-	map<Vert*, list<Vert*>> ways_to;
+	map<Vert*, list<Vert*>> ways_from;
 	MyGraph() : num_vertexes(0), num_edges(0),newindex(0) {}
 	~MyGraph();//
 	
@@ -32,7 +32,7 @@ struct MyGraph
 	void removeVert(Vert* v);
 	void removeVert(int index);
 	void removeEdge(int indexFrom, int  indexTo);
-
+    void removeEdge(Vert* vertFrom, Vert* vertTo);
 	
 	void showWaysFrom(int index);
 
@@ -47,7 +47,7 @@ private:
 	int getIndex(Vert* v);
 	
 	void addEdge(Vert* vertFrom, Vert* vertTo);
-	void removeEdge(Vert* vertFrom, Vert* vertTo);
+	
 
 	int newindex;
 	list<Vert*> notViseted;
