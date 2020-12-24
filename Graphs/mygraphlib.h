@@ -9,9 +9,9 @@ class Vert
 public:
 	const int index;
 	int color;
-	Vert(int index,int data):index(index)
+	Vert(int index,int color):index(index)
 	{
-		this->color = data;
+		this->color = color;
 	}	
 };
 
