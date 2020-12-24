@@ -71,7 +71,7 @@ bool MyGraph::haveCicle_dontSeeThat(Vert* v, Vert* that)
 		if (u->color == 'b')
 			return false;
 		if (u->color == 'w')
-			return  haveCicle_dontSeeThat(*item, that);
+			if(haveCicle_dontSeeThat(*item, that)) return true;
 	}
 	v->color = 'b';
 	return false;
@@ -154,7 +154,7 @@ bool MyGraph::haveCicle(Vert* v)
 		if (u->color == 'b')
 			return false;
 		if (u->color == 'w')
-			return  haveCicle(*item);
+			if(haveCicle(*item)) return 1;
 	}
 	v->color = 'b';
 	return false;
