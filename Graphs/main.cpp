@@ -26,6 +26,6 @@ int main()
 	G.addEdge(7, 8);
 	G.addEdge(9, 7);
 	
-	cout << G.withoutThisUncicled_slow();
+	cout << G.withoutThisUncicled();
 	return 0;
 }
