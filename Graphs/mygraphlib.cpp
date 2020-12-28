@@ -99,7 +99,7 @@ bool MyGraph::haveCicles_dontSeeThat(Vert* v)
 	}
 
 }
-int MyGraph::withoutThisUncicled_slow()
+int MyGraph::withoutThisUncicled()
 {
 	if (!haveCicles()) return INT32_MIN+1;
 
