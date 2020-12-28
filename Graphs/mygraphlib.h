@@ -38,7 +38,7 @@ struct MyGraph
 
 	bool haveCicles();
 
-	int withoutThisUncicled_slow();
+	int withoutThisUncicled();
 private:
 	void color(char c);
 	bool haveCicle(Vert* v);
