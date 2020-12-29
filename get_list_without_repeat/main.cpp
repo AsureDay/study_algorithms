@@ -16,6 +16,7 @@ list<char> getListWithoutRepeat(list<char> s)
 			havethat.insert(c);
 			result.push_front(c);
 		}
+		s.pop_back();
 	}
 	havethat.clear();
 	return  result;
